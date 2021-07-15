@@ -21,12 +21,14 @@ ActiveRecord::Schema.define(version: 2021_07_15_160222) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.string "name"
     t.string "date"
     t.string "home_team"
     t.string "away_team"
     t.integer "away_score"
     t.integer "home_score"
+    t.string "home_logo"
+    t.string "away_logo"
+    t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
