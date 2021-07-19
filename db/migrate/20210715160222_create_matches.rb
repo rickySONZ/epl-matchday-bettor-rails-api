@@ -9,6 +9,7 @@ class CreateMatches < ActiveRecord::Migration[6.1]
       t.string :home_logo
       t.string :away_logo
       t.string :uid
+      t.integer :scoreboard_id
       t.timestamps
     end
   end

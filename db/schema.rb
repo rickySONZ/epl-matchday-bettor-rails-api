@@ -29,13 +29,14 @@ ActiveRecord::Schema.define(version: 2021_07_15_160222) do
     t.string "home_logo"
     t.string "away_logo"
     t.string "uid"
+    t.integer "scoreboard_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "scoreboards", force: :cascade do |t|
-    t.string "name"
-    t.string "date"
+    t.string "start_date"
+    t.string "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
