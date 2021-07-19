@@ -33,6 +33,16 @@ class ScoreboardsController < ApplicationController
     end
   end
 
+  def get_or_update_api
+    if Api.change_dates
+      Api.change_dates
+      Api.pull_matchday_data
+    else
+      Api.update_current_matches
+      @scoreboard = Scoreboard.find_by(end_date: Api.get_end_date())
+    end
+  end
+
   # DELETE /scoreboards/1
   def destroy
     @scoreboard.destroy

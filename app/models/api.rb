@@ -33,6 +33,7 @@ class Api < ApplicationRecord
         @@start_date
     end
 
+##In matches controller checks if date changes then conditionally updates
     def self.update_current_matches
         @url = "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?dates=#{@@start_date}-#{@@end_date}"
         match_array = HTTParty.get(@url)
@@ -51,7 +52,7 @@ class Api < ApplicationRecord
         end
     end
 
-# When fully implemented the app will check and see if the date changes
+# app will check and see if the date changes, this is called in matches controller
 #If the date changes were making this new scoreboard, or were updating the matches in the previous scoreboard
     def self.pull_matchday_data()
         if Api.change_dates()

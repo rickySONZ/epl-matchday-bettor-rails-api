@@ -13,15 +13,6 @@ class MatchesController < ApplicationController
     render json: @match
   end
 
-  def get_or_update_api
-    if Api.change_dates
-      Api.change_dates
-      Api.pull_matchday_data
-    else
-      Api.update_current_matches
-    end
-  end
-
   # POST /matches
   def create
     @match = Match.new(match_params)
