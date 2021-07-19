@@ -10,16 +10,19 @@ class Api < ApplicationRecord
         match_array = match_array["events"]
         match_array.each do |match_hash|
             match_hash["competitions"].each do |m|
-                newMatch = Match.create(:uid => m["id"],
-                    :date => m["date"], 
-                    :home_team => m["competitors"][0]["team"]["name"], 
-                    :away_team => m["competitors"][1]["team"]["name"],
-                    :home_score => m["competitors"][0]["score"],
-                    :away_score => m["competitors"][1]["score"],
-                    :home_logo => m["competitors"][0]["team"]["logo"],
-                    :away_logo => m["competitors"][1]["team"]["logo"]
-                )
-                
+                if !(Match.find_by_uid(m["id"]))
+                    newMatch = Match.create(:uid => m["id"],
+                        :date => m["date"], 
+                        :home_team => m["competitors"][0]["team"]["name"], 
+                        :away_team => m["competitors"][1]["team"]["name"],
+                        :home_score => m["competitors"][0]["score"],
+                        :away_score => m["competitors"][1]["score"],
+                        :home_logo => m["competitors"][0]["team"]["logo"],
+                        :away_logo => m["competitors"][1]["team"]["logo"]
+                    )
+                    
+                    newMatch.save
+                end
             end
         end
     end
