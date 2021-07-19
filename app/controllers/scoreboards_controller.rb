@@ -37,9 +37,12 @@ class ScoreboardsController < ApplicationController
     if Api.change_dates
       Api.change_dates
       Api.pull_matchday_data
+      @scoreboard = Scoreboard.find_by(end_date: Api.get_end_date())
+      render json: @scoreboard.to_json(include: [:matches])
     else
       Api.update_current_matches
       @scoreboard = Scoreboard.find_by(end_date: Api.get_end_date())
+      render json: @scoreboard.to_json(include: [:matches])
     end
   end
 
