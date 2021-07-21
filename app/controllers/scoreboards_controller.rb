@@ -10,7 +10,7 @@ class ScoreboardsController < ApplicationController
 
   # GET /scoreboards/1
   def show
-    render json: @scoreboard
+    render json: @scoreboard.to_json(include: [:matches])
   end
 
   # POST /scoreboards
