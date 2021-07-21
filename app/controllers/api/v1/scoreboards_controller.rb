@@ -1,4 +1,4 @@
-class ScoreboardsController < ApplicationController
+class Api::V1::ScoreboardsController < ApplicationController
   before_action :set_scoreboard, only: [:show, :update, :destroy]
 
   # GET /scoreboards
