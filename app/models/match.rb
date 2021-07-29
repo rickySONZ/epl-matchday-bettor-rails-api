@@ -3,6 +3,7 @@ class Match < ApplicationRecord
     belongs_to :scoreboard
     has_many :scores
 
+    validates :date, presence: true
     validates :home_team, presence: true
     validates :away_team, presence: true
     validates :home_logo, presence: true
